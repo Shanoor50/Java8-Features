@@ -12,7 +12,7 @@ import java.util.*;
 		}
 	}
 }*/
-//Problem: It conot Check at Compile Time.You can add any type, and it fails at runtime.
+//Problem: It connot Check at Compile Time.You can add any type, and it fails at runtime.
 //That’s why Generics are designed to catch type errors during compilation itself, to prevent runtime issues.
 //So, if Generics didn’t check at compile-time, you’d only find errors at runtime → unsafe, messy, and more crashes,buggy, and less maintainable.
 //Generics = Code reusability + Type safety + Compile-time checks.
