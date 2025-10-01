@@ -12,4 +12,9 @@ public class Airtel implements SIM{
 		System.out.println("Sending message using Airtel");
 	}
 	
+	// Optional: override videoCall
+    @Override
+    public void videoCall() {
+        System.out.println("Airtel Video Call Feature");
+    }
 }
