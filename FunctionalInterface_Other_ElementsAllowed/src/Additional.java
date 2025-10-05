@@ -6,8 +6,8 @@ public interface Additional {
 
 /*@FunctionalInterface
 public interface Additional {
-	public void add(int a,int b);
-	//public void add(int a,int b,int c); //FUnctionalInterface allow us to create only one method this is not allowed
+	public void add(int a,int b); //only one custom abstract method is allowed
+	//public void add(int a,int b,int c); //FUnctionalInterface allow us to create only one abstract method this is not allowed
 }*/
 
 
