@@ -116,3 +116,26 @@ public interface Example2 {
 interface Sample extends Example1,Example2{
 	
 }*/
+
+
+//***********Case10*************(ERROR)
+//No abstruct method found in it
+/*@FunctionalInterface
+public interface Example {
+	int hashCode();//this is abstruct method but it is custom abstruct method
+}*/
+
+
+//************Case11**************(Succuss)
+@FunctionalInterface
+public interface Example{
+	void m1();//custom abstruct method
+	int hashCode();//implicit abstruct method
+}
+
+//Sample FI consider m1() method as custom abstruct method remaining are not custom abstruct methods
+@FunctionalInterface
+interface Sample extends Example{
+	boolean equals(Object obj);//implicit abstruct method
+}
+
