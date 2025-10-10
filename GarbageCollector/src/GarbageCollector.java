@@ -26,6 +26,7 @@ public class GarbageCollector {
 		new GarbageCollector();//Unreference object or Unused object
 		System.gc();// request to run garbage collector but not run bec If the JVM sees that there’s enough memory available, it will ignore the request.
 		System.out.println("program ends");
+		//why try block bec sometime we explicitly calling GC by using "System.gc()" but finalize method not called thats why we pausing main thread
 		try {
 			Thread.sleep(2000); //here we are pausing main thread bec whenever high priority thread like main work completed then JVM ignore low priority threads like GC
 		}catch(Exception e){
