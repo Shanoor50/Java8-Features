@@ -53,7 +53,7 @@ public class GarbageCollector {
     static GarbageCollector m2() {
         GarbageCollector ob6 = new GarbageCollector();
         GarbageCollector ob7 = new GarbageCollector();
-        return ob7; // only ob6 becomes unreferenced
+        return ob7; // only ob7 and ob6 becomes unreferenced ob7 because m2() method is not holding
     }
 
     public static void main(String[] args) throws InterruptedException {
