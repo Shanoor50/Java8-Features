@@ -45,29 +45,34 @@ public class GarbageCollector {
     }
 
     static void m1() {
-        GarbageCollector ob4 = new GarbageCollector();
-        GarbageCollector ob5 = new GarbageCollector();
+        GarbageCollector ob4 = new GarbageCollector();//4
+        GarbageCollector ob5 = new GarbageCollector();//5
         // ob4 and ob5 become unreferenced when m1() ends
     }
 
     static GarbageCollector m2() {
-        GarbageCollector ob6 = new GarbageCollector();
-        GarbageCollector ob7 = new GarbageCollector();
-        return ob7; // only ob7 and ob6 becomes unreferenced ob7 because m2() method is not holding
+        GarbageCollector ob6 = new GarbageCollector();//6
+        GarbageCollector ob7 = new GarbageCollector();//7
+        return ob7; // ob7 and ob6 becomes unreferenced ob7 because m2() method is not holding
     }
 
+    static GarbageCollector m3() {
+        GarbageCollector ob8 = new GarbageCollector();//8
+        GarbageCollector ob9 = new GarbageCollector();//9
+        return ob9; // only ob8 becomes unreferenced because m3() method is holding ob9
+    }
     public static void main(String[] args) throws InterruptedException {
         GarbageCollector ob1 = new GarbageCollector();
         GarbageCollector ob2 = new GarbageCollector();
         GarbageCollector ob3 = new GarbageCollector();
 
-        ob1 = null;              // eligible for GC
-        ob2 = ob3;               // old object referenced by ob2 is now eligible
-        new GarbageCollector();  // anonymous object, eligible immediately
+        ob1 = null;              // 1.eligible for GC
+        ob2 = ob3;               //2. old object referenced by ob2 is now eligible
+        new GarbageCollector();  //3. anonymous object, eligible immediately
 
         m1();                    // creates 2 more (both eligible after m1 ends)
-        m2();                    // creates 2 (1 eligible, 1 returned & still referenced)
-
+        m2();                    //m2 not holding it is unreferenced
+        GarbageCollector ob10=m3(); //m3() holding it is referenced
         System.out.println("Requesting Garbage Collection...");
         System.gc(); // request GC
 
