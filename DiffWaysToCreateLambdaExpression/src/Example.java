@@ -48,5 +48,35 @@ public class Example {
         //F5 f17=()->return 8;//ERROR
         F5 f17=()-> 8;//if a LE with direct literal then compiler implicitly provied return type like F5 f17=()-> 8;==> Convert ==>F5 f17=()-> {return 8;};
        // F5 f18=()->{ 8 };//ERROR bec inside body you cannot use literal directly
+        
+        //ERROR
+        //F5 f18=()->m1();//FI methods m5 Excepting return value but m1() local method is void ,here compiler implecitly F5 f18=()->m1(); convert F5 f18=()->{return m1();};
+        
+        //succusfull
+        F5 f19=()->m2();//here compiler implecitly F5 f19=()->m2(); convert F5 f19=()->{return m2();};
+        
+        //F5 f20=()->{m2();};//LE Excepting return value ,here compiler doesn't provide return Type in LE body
+        F5 f21=()->{return m2();};
+        System.out.println(f21);
+        System.out.println(f21.m5());
+        
+        //F5 f22=()->System.out.println("hi");//here compiler add return keyword to sop but println() return type is void,but LE m5() excepting return type
+        
+        //ERROR
+        //F1 f23=()->2;//bec here compiler not adding return keyword explicitly bec F1 FI method return type is void ,compiler add return type by looking return type of method 
+        F5 f24=()->5;//here return type method is non void that's why compiler adding return keyword implicitly
+        F5 f25=()->'a';//here return type value must be same or lesser type
+        //ERROR
+        //F5 f26=()->5L;//here return type value must be same or lesser type,but 5L is long higher than int
+        //ERROR
+        //F5 f27=()->5.0;//here return type value must be same or lesser type,but 5.0 is float higher than int
+        F5 f27=()->(int)5.0;//here using Type casting
+        
+    }
+    static void m1() {
+    	
+    }
+    static int m2() {
+    	return 5;
     }
 }
